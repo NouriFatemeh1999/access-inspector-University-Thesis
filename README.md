@@ -29,9 +29,9 @@ This project was developed as a Master's thesis at **Politecnico di Torino**, in
     <td align="center"><b>Profile</b></td>
   </tr>
   <tr>
-    <td><img src="docs/screenshots/popup.png" width="220"/></td>
-    <td><img src="docs/screenshots/signup.png" width="220"/></td>
-    <td><img src="docs/screenshots/profile.png" width="220"/></td>
+    <td><img src="screenshots/popup.png" width="220"/></td>
+    <td><img src="screenshots/signup.png" width="220"/></td>
+    <td><img src="screenshots/profile.png" width="220"/></td>
   </tr>
   <tr>
     <td align="center"><b>Leaderboard</b></td>
@@ -39,9 +39,9 @@ This project was developed as a Master's thesis at **Politecnico di Torino**, in
     <td align="center"><b>In Action</b></td>
   </tr>
   <tr>
-    <td><img src="docs/screenshots/leaderboard.png" width="220"/></td>
-    <td><img src="docs/screenshots/multiplayer.png" width="220"/></td>
-    <td><img src="docs/screenshots/in-action.png" width="220"/></td>
+    <td><img src="screenshots/leaderboard.png" width="220"/></td>
+    <td><img src="screenshots/multiplayer.png" width="220"/></td>
+    <td><img src="screenshots/in-action.png" width="220"/></td>
   </tr>
 </table>
 
