@@ -1,0 +1,45 @@
+# ============================================================
+# docker-compose.yml — one-command startup for the backend
+# Run with: docker compose up
+# ============================================================
+
+services:
+  backend:
+    # Build the image from the Dockerfile in this folder
+    build: .
+
+    # Name the container so it's easy to spot in Docker Desktop
+    container_name: access-inspector-backend
+
+    # Map port 3000 inside the container → port 3000 on your computer
+    # This is what lets the Chrome extension reach it at localhost:3000
+    ports:
+      - "3000:3000"
+
+    # VOLUMES
+    # 1. PERSISTENT DATABASE: stores users.db outside the container in a
+    #    Docker-managed volume so user accounts survive container restarts.
+    # 2. SA11Y DEMO FILES: mounts the Sa11y docs/ folder read-only into the
+    #    container so the backend can serve tutorial pages at
+    #    http://localhost:3000/demo/en/errors.html (etc.)
+    #
+    # The path "../sa11y-master/docs" is relative to this docker-compose.yml
+    # which lives in D:\Thesis\Sa11y-repo\sa11y-master\backend\
+    # So "../" goes up one level into sa11y-master/, then we use "docs".
+    volumes:
+      - access-inspector-data:/app/data
+      - ../docs:/app/demo-files:ro
+
+    # Environment variables passed to server.js:
+    # - DB_PATH: where the SQLite database lives inside the container
+    # - DEMO_PATH: where the demo files were mounted (matches volume above)
+    environment:
+      - DB_PATH=/app/data/users.db
+      - DEMO_PATH=/app/demo-files
+
+    # Auto-restart if the server crashes
+    restart: unless-stopped
+
+# Declare the named volume we used above
+volumes:
+  access-inspector-data:

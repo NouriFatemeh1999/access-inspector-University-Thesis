@@ -1,0 +1,10 @@
+# Files/folders Docker should NOT copy into the image
+# (keeps the image smaller and avoids stale dependencies)
+
+node_modules
+npm-debug.log
+.git
+.gitignore
+.env
+*.md
+users.db

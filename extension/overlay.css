@@ -1,0 +1,829 @@
+/* ============================================================
+ * Access Inspector — overlay.css
+ * Styles for floating overlays injected onto webpages.
+ * All selectors prefixed with .ai- to avoid host page conflicts.
+ * ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap');
+
+/* --- BACKDROP --- */
+.ai-overlay-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 2147483646;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ai-fade-in 0.2s ease;
+}
+
+/* --- CARD (full gradient background) --- */
+.ai-overlay-card {
+  position: relative;
+  width: 480px;
+  max-width: 92vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  font-family: 'Fraunces', Georgia, serif;
+  color: #2F4157;
+  animation: ai-slide-up 0.25s ease;
+}
+
+/* ============================================================
+ * TUTORIAL CARDS
+ * ============================================================ */
+.ai-tutorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-tutorial-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 12px 16px 12px 12px;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.1s ease;
+  border: 1.5px solid #e2ddd6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.ai-tutorial-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transform: translateY(-1px);
+}
+.ai-tutorial-card:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.ai-tutorial-icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-tutorial-icon-glyph {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.ai-tutorial-text { flex: 1; min-width: 0; }
+
+.ai-tutorial-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0F0A0A;
+  margin-bottom: 2px;
+}
+
+.ai-tutorial-desc {
+  font-size: 12px;
+  color: #888;
+}
+
+.ai-tutorial-chevron {
+  font-size: 20px;
+  color: #bbb;
+  flex-shrink: 0;
+  line-height: 1;
+  font-weight: 400;
+}
+/* --- HEADER (used by login/profile overlays) --- */
+.ai-overlay-header {
+  background: transparent;
+  padding: 24px 24px 20px 24px;
+}
+.ai-overlay-header h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #0F0A0A;
+  font-weight: 700;
+}
+
+/* --- BODY --- */
+.ai-overlay-body {
+  padding: 24px;
+  background: transparent;
+  position: relative;
+  overflow: visible;
+}
+
+/* --- CLOSE BUTTON --- */
+.ai-overlay-close {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 32px; height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #3E333F;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s ease, transform 0.1s ease;
+  z-index: 100;
+}
+.ai-overlay-close:hover { background: #FCE0A7; transform: scale(1.1); }
+
+/* --- ANIMATIONS --- */
+@keyframes ai-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes ai-slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- BUTTONS --- */
+.ai-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.ai-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.ai-btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+.ai-btn-primary { background: #577C8E; color: white; }
+.ai-btn-secondary { background: #1a6b5a; color: white; }
+
+/* --- FORM INPUTS (used by login/profile overlays) --- */
+.ai-overlay-body label {
+  display: block;
+  font-size: 13px;
+  font-weight: 750;
+  margin: 12px 0 6px 0;
+  color: #3E333F;
+}
+.ai-overlay-body input[type="text"],
+.ai-overlay-body input[type="email"],
+.ai-overlay-body input[type="password"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  background: #fff7dc;
+}
+.ai-overlay-body input:focus {
+  outline: 2px solid #55C2BC;
+  outline-offset: 1px;
+  background: #fff;
+}
+
+/* ============================================================
+ * SIGNUP-SPECIFIC STYLES
+ * ============================================================ */
+
+/* Signup content wrapper — provides padding inside the gradient card */
+.ai-signup-content {
+  padding: 24px;
+}
+
+/* Card-level title */
+.ai-card-title {
+  margin: 0 0 20px 0;
+  font-size: 22px;
+  color: #0F0A0A;
+  font-weight: 700;
+}
+
+/* Inner white box: avatar (left) + username/color-picker (right) */
+.ai-signup-inner-box {
+  background: #FAF1E8;
+  border-radius: 16px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ai-field-row-inner-box {
+  background: #FAF1E8;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Avatar column */
+.ai-signup-avatar-col {
+  text-align: center;
+}
+
+#ai-signup-avatar {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 3px solid #3E333F;
+}
+
+/* Right column: username input + color label + color picker */
+.ai-signup-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ai-signup-right-col input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #C7D9E5;
+  color: #2F4157;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+.ai-signup-right-col input[type="text"]::placeholder { color: #2F4157; }
+.ai-signup-right-col input[type="text"]:focus {
+  outline: 2px solid #2F4157;
+  outline-offset: 1px;
+}
+
+.ai-signup-color-label {
+  font-size: 13px;
+  font-weight: 750;
+  margin: 0;
+  color: #2F4157;
+}
+
+/* Color picker dots */
+.ai-color-picker {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ai-color-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.1s ease, border-color 0.15s ease;
+}
+.ai-color-dot:hover { transform: scale(1.15); }
+.ai-color-dot.selected {
+  border-color: #3E333F;
+  transform: scale(1.15);
+}
+
+/* Color swatches — these MUST match the SVG colors */
+.ai-color-peach  { background: #f4a583; }
+.ai-color-teal   { background: #4ecdc4; }
+.ai-color-orange { background: #ee6c2d; }
+.ai-color-yellow { background: #f4b942; }
+.ai-color-purple { background: #c89bce; }
+
+/* Horizontal label + input rows for email / password */
+.ai-field-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.ai-field-row label {
+  font-size: 14px;
+  font-weight: 750;
+  color: #2F4157;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+.ai-field-row input {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #C7D9E5;
+  color: #2F4157;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+.ai-field-row input::placeholder { color: #2F4157; }
+.ai-field-row input:focus {
+  outline: 2px solid #2F4157;
+  outline-offset: 1px;
+}
+
+/* --- MESSAGES (errors, success, info) --- */
+.ai-message {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  text-align: center;
+  margin: 12px 0;
+  display: none;
+}
+.ai-message-error   { display: block; background: #fee; color: #c0392b; border: 1px solid #f5c6cb; }
+.ai-message-success { display: block; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.ai-message-info    { display: block; background: #e7f3fe; color: #1a6b5a; border: 1px solid #b6e0d9; }
+
+/* Footnote (e.g., "already have an account?") */
+.ai-overlay-footnote {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 16px;
+  color: #7f8c8d;
+}
+.ai-overlay-footnote a {
+  color: #1a6b5a;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ============================================================
+ * Login
+ * ============================================================ */
+.ai-login-welcome {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  top: -70px;
+  right: -30px;
+  border-radius: 12px;
+  z-index: 10;
+}
+.ai-card-title-login{
+  margin: 20px 0 20px 20px;
+  font-size: 22px;
+  color: #2F4157;
+  font-weight: 700;
+}
+
+.ai-field-row input[type="text"],
+.ai-field-row input[type="password"] {
+  background: #C7D9E5 !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ============================================================
+ * PROFILE STYLES
+ * ============================================================ */
+ 
+/* Top section: avatar + username + level */
+.ai-profile-top {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#ai-profile-avatar {
+  width: 110px;
+  height: 110px;
+  display: block;
+}
+.ai-profile-userinfo { min-width: 0; }
+.ai-profile-username-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.ai-profile-username {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+.ai-profile-edit {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 2px 4px;
+}
+.ai-profile-edit:hover { opacity: 1; }
+.ai-profile-level {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2F4157;
+  margin-bottom: 6px;
+}
+ 
+/* XP progress bar */
+.ai-profile-xp-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.ai-profile-xp-fill {
+  height: 100%;
+  background: #577C8E;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+.ai-profile-xp-text {
+  font-size: 11px;
+  color: #7f8c8d;
+}
+ 
+/* Tabs */
+.ai-profile-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #F4EFEB;
+}
+.ai-profile-tab {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #7f8c8d;
+  font-family: inherit;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+.ai-profile-tab.active {
+  color: #2F4157;
+  border-bottom-color: #2F4157;
+}
+.ai-profile-tab.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+ 
+/* Dashboard rows */
+.ai-profile-dashboard {
+  background: #F4EFEB;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+.ai-profile-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e8dfc8;
+}
+.ai-profile-stat-row:last-child { border-bottom: none; }
+.ai-profile-stat-label {
+  font-size: 13px;
+  color: #2F4157;
+}
+.ai-profile-stat-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2F4157;
+}
+
+/* ============================================================
+ * TUTORIAL CARDS
+ * ============================================================ */
+.ai-tutorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-tutorial-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #F4EFEB;
+  border-radius: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 2px solid transparent;
+}
+.ai-tutorial-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  border-color: #4ecdc4;
+}
+
+.ai-tutorial-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.ai-tutorial-text { min-width: 0; }
+
+.ai-tutorial-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2F4157;
+  margin-bottom: 3px;
+}
+
+.ai-tutorial-desc {
+  font-size: 12px;
+  color: #2F4157;
+}
+
+/* ============================================================
+ * RESULTS OVERLAY (end-of-game)
+ * ============================================================ */
+.ai-results-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.ai-results-card {
+  background:
+    radial-gradient(circle at 115% -10%, rgba(189, 191, 9, 0.28) 40%, transparent 40%),
+    radial-gradient(circle at -15% 115%, rgba(217, 108, 6, 0.24) 40%, transparent 40%),
+    #FAF3E7;
+  padding: 32px 24px;
+  max-width: 90vw;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.ai-results-card--solo  { width: 300px; text-align: center; }
+.ai-results-card--multi { width: 320px; }
+
+/* Solo avatar — centered with dark ring */
+.ai-results-avatar {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  overflow: hidden;
+}
+.ai-results-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ai-results-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #0F0A0A;
+  font-style: italic;
+  font-family: 'Fraunces', Georgia, serif;
+  margin-bottom: 18px;
+}
+
+.ai-results-title--multi {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* Solo stat rows: icon + label left, value right */
+.ai-results-stats {
+  text-align: left;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.ai-results-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #0F0A0A;
+  font-family: 'Fraunces', Georgia, serif;
+  padding: 5px 0;
+}
+
+.ai-results-stat-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 500;
+}
+
+.ai-results-stat-label svg { flex-shrink: 0; }
+
+.ai-results-stat-value {
+  font-weight: 700;
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.ai-results-btn {
+  display: block;
+  margin: 8px auto 0;
+  width: fit-content;
+  min-width: 150px;
+  background: #BDBF09;
+  color: #0F0A0A;
+  border: none;
+  border-radius: 12px;
+  padding: 9px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Fraunces', Georgia, serif;
+  box-shadow: 0 4px 0 0 #97990A;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.ai-results-btn--full {
+  width: 100%;
+}
+
+/* Multiplayer player row */
+.ai-results-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ai-results-player-avatar {
+  /* border-radius: 50%;
+  border: 3px solid #22334A; */
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 62px; height: 62px;
+}
+
+.ai-results-player-avatar--winner {
+  width: 76px; height: 76px;
+  /* border-color: #22334A; */
+}
+
+.ai-results-player-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.ai-results-player-info { flex: 1; }
+
+.ai-results-player-rank {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0F0A0A;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ai-results-player-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F0A0A;
+}
+
+.ai-results-player-name--winner { font-size: 18px; }
+
+.ai-results-player-xp {
+  background: #FF6500;
+  box-shadow: 0 4px 0 0 #a34e04;
+  color: #0F0A0A;
+  border-radius: 12px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ============================================================
+ * GAMEPLAY — hide Sa11y dismiss controls while a game is active
+ * .ai-game-active is added to <body> by game.js on game start
+ * and removed when the game ends.
+ * ============================================================ */
+.ai-game-active sa11y-dismiss-tooltip,
+.ai-game-active [data-sa11y-dismiss],
+.ai-game-active button[data-dismiss] {
+  display: none !important;
+}
+
+/* ============================================================
+ * CANDIDATE POPUP — shown after reveal for gray-border elements
+ * ============================================================ */
+#ai-candidate-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 51, 74, 0.7);
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.ai-cand-card {
+  background: #FAF3E7;
+  border-radius: 20px;
+  width: 360px;
+  max-width: 92vw;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+.ai-cand-header {
+  background: #22334A;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ai-cand-label {
+  font-size: 13px;
+  font-weight: 800;
+  color: #FF6500;
+  letter-spacing: 0.5px;
+}
+
+.ai-cand-sub {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FAF3E7;
+}
+
+.ai-cand-reasons {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ai-cand-reason {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #22334A;
+  transition: background 0.15s;
+}
+
+.ai-cand-reason:hover { background: rgba(189,191,9,0.15); }
+
+.ai-cand-reason input[type="radio"] {
+  accent-color: #BDBF09;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.ai-cand-footer {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px 16px;
+}
+
+.ai-cand-btn {
+  flex: 1;
+  padding: 11px;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.ai-cand-btn:disabled { opacity: 0.5; cursor: default; }
+
+.ai-cand-btn--skip {
+  background: #e0d8cc;
+  color: #22334A;
+  box-shadow: 0 3px 0 0 #c4bdb2;
+}
+
+.ai-cand-btn--submit {
+  background: #BDBF09;
+  color: #0F0A0A;
+  box-shadow: 0 3px 0 0 #8a8c06;
+}

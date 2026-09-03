@@ -1,0 +1,13 @@
+/* Cancel Sa11y yellow outline on non-filtered warnings */
+[data-sa11y-warning]:not([data-sa11y-error]) {
+  outline: none !important;
+  box-shadow: none !important;
+}
+/* Hide ALL sa11y annotation icons by default */
+sa11y-annotation {
+  display: none !important;
+}
+/* Show back only annotations for filtered elements (marked by game.js with data-game-filter) */
+sa11y-annotation:has(+ [data-game-filter]) {
+  display: block !important;
+}
